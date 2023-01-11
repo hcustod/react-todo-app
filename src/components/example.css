@@ -1,0 +1,17 @@
+.example {
+    color: blue;
+    font-size: 20px;
+  }
+  
+  .example p {
+    margin: 10px;
+  }
+  
+  .example button {
+    padding: 10px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+  
