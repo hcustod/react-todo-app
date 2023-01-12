@@ -4,14 +4,19 @@ import Example from './components/example.js';
 import { useState } from 'react';
 
 const App = () => {
+  const [todos, setTodos] = useState("");
   const [todo, setTodo] = useState("");
 
+  const addTodo = () => {
+    if (todo !== "") {
+      setTodos([...todos, todo]);
+      setTodo("");
+    }
+  };
 
   return (
     <div className="App">
       <h1> React Todo App </h1>
-
-
 
 
       <header className="App-header">
@@ -33,9 +38,26 @@ const App = () => {
           }} 
         />
         
-          <button className="add-button">Add</button>
+
+          <button className="add-button" onClick={addTodo}>Add</button>
         </div>
 
+
+        {todos?.length > 0 ? (
+          <ul className="todo-list">
+            {todo.map((todo, index) => (
+              <div className="todo">
+                <li key={index}> {todo} </li>
+
+                <button className="delete-button">Delete</button>
+              </div>
+            ))}
+          </ul>
+        ) : (
+          <div className="emtpy">
+            <p> No task found </p>
+          </div>
+        )}
 
 
         <div>
@@ -43,15 +65,6 @@ const App = () => {
         </div>
 
 
-
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );
