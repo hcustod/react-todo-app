@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Example from './components/example.js';
 import { useState } from 'react';
@@ -14,16 +13,17 @@ const App = () => {
     }
   };
 
+  const deleteTodo = (text) => {
+    const newTodos = todo.filter((todo) => {
+      return todo !== text;
+    });
+    setTodos(newTodos);
+  };
+
+
   return (
     <div className="App">
       <h1> React Todo App </h1>
-
-
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
 
 
 
@@ -39,17 +39,25 @@ const App = () => {
         />
         
 
+
           <button className="add-button" onClick={addTodo}>Add</button>
         </div>
 
 
+
         {todos?.length > 0 ? (
           <ul className="todo-list">
-            {todo.map((todo, index) => (
+            {todos.map((todo, index) => (
               <div className="todo">
                 <li key={index}> {todo} </li>
 
-                <button className="delete-button">Delete</button>
+                <button className="delete-button"
+                onClick={() => {
+                  deleteTodo(todo);
+                }}
+                >
+                  Delete
+                  </button>
               </div>
             ))}
           </ul>
@@ -60,12 +68,12 @@ const App = () => {
         )}
 
 
+
         <div>
           <Example />
         </div>
 
 
-      </header>
     </div>
   );
 }
