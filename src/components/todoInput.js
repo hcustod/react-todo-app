@@ -1,4 +1,7 @@
 
+import './todoInput.css';
+
+
 const TodoInput = ({ todo, setTodo, addTodo }) => {
     return (
         <div className="input-wrapper">

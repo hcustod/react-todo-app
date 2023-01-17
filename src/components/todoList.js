@@ -1,4 +1,6 @@
     
+import './todoList.css';
+
 const TodoList = ({ list, remove }) => {
     return (
     <>
